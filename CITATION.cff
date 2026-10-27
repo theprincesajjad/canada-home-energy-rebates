@@ -1,0 +1,30 @@
+cff-version: 1.2.0
+message: "If you use this dataset, please cite it as below."
+title: "Canadian home energy rebate programs dataset"
+type: dataset
+authors:
+  - name: "RebateHub.ca"
+    website: "https://rebatehub.ca/"
+    email: "hello@rebatehub.ca"
+version: "2026.10.25"
+date-released: "2026-10-25"
+license: CC-BY-4.0
+url: "https://rebatehub.ca/data"
+repository: "https://github.com/theprincesajjad/canada-home-energy-rebates"
+abstract: "Open dataset of Canadian home energy rebate, grant, loan and tax-credit programs: federal, provincial, territorial, utility and municipal, in all 13 provinces and territories. Each record has status, deadline, amounts, eligibility rules and official source links, checked against official pages."
+keywords:
+  - Canada
+  - home energy
+  - energy efficiency
+  - rebates
+  - heat pumps
+  - open data
+preferred-citation:
+  type: dataset
+  title: "Canadian home energy rebate programs dataset"
+  authors:
+    - name: "RebateHub.ca"
+  year: 2026
+  url: "https://rebatehub.ca/data"
+  publisher:
+    name: "RebateHub.ca"

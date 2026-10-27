@@ -1,0 +1,246 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "canada-home-energy-rebates",
+  "title": "Canadian home energy rebate programs",
+  "description": "Federal, provincial, territorial, utility and municipal home energy rebates, grants, loans and tax credits in Canada. Snapshot 2026-10-25: 181 program records. 135 current (124 open, 4 closing soon, 5 waitlist, 2 upcoming) and 46 closed. Published by RebateHub.ca, an independent Ontario business that is not a government site.",
+  "version": "2026.10.25",
+  "created": "2026-10-25",
+  "homepage": "https://rebatehub.ca/data",
+  "licenses": [
+    {
+      "name": "CC-BY-4.0",
+      "path": "https://creativecommons.org/licenses/by/4.0/",
+      "title": "Creative Commons Attribution 4.0 International"
+    }
+  ],
+  "contributors": [
+    {
+      "title": "RebateHub.ca",
+      "role": "author",
+      "path": "https://rebatehub.ca/"
+    }
+  ],
+  "keywords": [
+    "canada",
+    "home energy",
+    "energy efficiency",
+    "rebates",
+    "incentives",
+    "heat pumps",
+    "housing",
+    "open data"
+  ],
+  "sources": [
+    {
+      "title": "RebateHub.ca methodology",
+      "path": "https://rebatehub.ca/methodology"
+    }
+  ],
+  "resources": [
+    {
+      "name": "programs",
+      "path": "data/programs.csv",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "dialect": {
+        "lineTerminator": "\r\n",
+        "header": true,
+        "delimiter": ",",
+        "quoteChar": "\""
+      },
+      "schema": {
+        "primaryKey": "id",
+        "fields": [
+          {
+            "name": "id",
+            "description": "Stable identifier. Our program page is /rebates/{id}.",
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "description": "Program name in English, as the administrator writes it.",
+            "type": "string"
+          },
+          {
+            "name": "shortName",
+            "description": "Common short name or acronym, if there is one.",
+            "type": "string"
+          },
+          {
+            "name": "administrator",
+            "description": "The government body, agency or utility that runs the program.",
+            "type": "string"
+          },
+          {
+            "name": "level",
+            "description": "Level of government: federal, provincial, utility, municipal.",
+            "type": "string"
+          },
+          {
+            "name": "jurisdictions",
+            "description": "Province or territory codes it covers. CA means Canada-wide.",
+            "type": "string"
+          },
+          {
+            "name": "regions",
+            "description": "Cities or areas it is limited to, if any.",
+            "type": "string"
+          },
+          {
+            "name": "status",
+            "description": "One of open, closing-soon, waitlist, upcoming, closed.",
+            "type": "string"
+          },
+          {
+            "name": "categories",
+            "description": "Upgrades it pays for, such as heat-pumps or insulation.",
+            "type": "string"
+          },
+          {
+            "name": "audience",
+            "description": "Who can apply: homeowners, landlords, renters, low-income, businesses, new-builds.",
+            "type": "string"
+          },
+          {
+            "name": "summary",
+            "description": "One-sentence plain-language summary.",
+            "type": "string"
+          },
+          {
+            "name": "description",
+            "description": "Longer plain-language description.",
+            "type": "string"
+          },
+          {
+            "name": "maxAmount",
+            "description": "Largest amount in Canadian dollars across its tiers. Empty when there is no single maximum.",
+            "type": "number"
+          },
+          {
+            "name": "amountDisplay",
+            "description": "The amount in words, as shown on our pages.",
+            "type": "string"
+          },
+          {
+            "name": "fundingType",
+            "description": "Kind of support: rebate, grant, loan, interest-free-loan, tax-credit, free-upgrade, point-of-sale-discount.",
+            "type": "string"
+          },
+          {
+            "name": "incentives",
+            "description": "Each upgrade and what it pays. In the CSV, each item is written as “measure: amount”.",
+            "type": "string"
+          },
+          {
+            "name": "eligibility",
+            "description": "The main eligibility rules.",
+            "type": "string"
+          },
+          {
+            "name": "howToApply",
+            "description": "Application steps, in order.",
+            "type": "string"
+          },
+          {
+            "name": "requiresAudit",
+            "description": "Whether an energy assessment is required. Empty when the program doesn’t say.",
+            "type": "boolean"
+          },
+          {
+            "name": "requiresPreapproval",
+            "description": "Whether you must be approved or registered before buying or installing. Empty when it varies by upgrade or the program doesn’t say.",
+            "type": "boolean"
+          },
+          {
+            "name": "incomeTested",
+            "description": "Whether the program has an income limit.",
+            "type": "boolean"
+          },
+          {
+            "name": "stackableWith",
+            "description": "Ids of programs its administrator says it can be combined with. Our totals only add programs recorded as combining.",
+            "type": "string"
+          },
+          {
+            "name": "stackableWithLevels",
+            "description": "Levels of government (e.g. provincial) whose programs it says it can be combined with, when it says so in general terms.",
+            "type": "string"
+          },
+          {
+            "name": "excludesWith",
+            "description": "Ids of programs that can’t pay for the same upgrade as this one. Only the larger is counted in our totals.",
+            "type": "string"
+          },
+          {
+            "name": "stackingGroup",
+            "description": "Programs sharing this group can’t both pay for the same upgrade (e.g. one Hydro-Québec or Québec-government grant per heat pump).",
+            "type": "string"
+          },
+          {
+            "name": "deadline",
+            "description": "Official deadline (YYYY-MM-DD), if one is published.",
+            "type": "date",
+            "format": "%Y-%m-%d"
+          },
+          {
+            "name": "startDate",
+            "description": "Start date (YYYY-MM-DD), if one is published.",
+            "type": "date",
+            "format": "%Y-%m-%d"
+          },
+          {
+            "name": "officialUrl",
+            "description": "The administrator’s program page, where you apply.",
+            "type": "string",
+            "format": "uri"
+          },
+          {
+            "name": "sourceUrls",
+            "description": "Every official source we used for the record.",
+            "type": "string"
+          },
+          {
+            "name": "lastVerified",
+            "description": "Date we last checked the record against official sources (YYYY-MM-DD).",
+            "type": "date",
+            "format": "%Y-%m-%d"
+          },
+          {
+            "name": "confidence",
+            "description": "Our confidence in the record: high, medium or low. See the methodology page.",
+            "type": "string"
+          },
+          {
+            "name": "notes",
+            "description": "Guidance and caveats for readers.",
+            "type": "string"
+          },
+          {
+            "name": "homeTypes",
+            "description": "Set only when a program is limited to a kind of home (house or condo).",
+            "type": "string"
+          },
+          {
+            "name": "heatingFuels",
+            "description": "Set only when a program is limited to homes heated by these fuels, e.g. a gas utility's offer to its own customers.",
+            "type": "string"
+          },
+          {
+            "name": "url",
+            "description": "Our page for the program.",
+            "type": "string",
+            "format": "uri"
+          }
+        ]
+      }
+    },
+    {
+      "name": "programs-json",
+      "path": "data/programs.json",
+      "format": "json",
+      "mediatype": "application/json",
+      "encoding": "utf-8"
+    }
+  ]
+}

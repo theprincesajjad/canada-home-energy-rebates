@@ -1,0 +1,57 @@
+# Monthly: pull the live files from rebatehub.ca, commit if the data changed, and publish a
+# GitHub release tagged with the verification date. With the Zenodo GitHub integration switched
+# on, each release is archived with a version DOI. It only reads public URLs and needs no secrets.
+name: Sync dataset from rebatehub.ca
+
+on:
+  schedule:
+    - cron: "17 13 2 * *" # 13:17 UTC on the 2nd of each month
+  workflow_dispatch: {}
+
+permissions:
+  contents: write # commit data and create the release
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download live files
+        run: |
+          set -euo pipefail
+          mkdir -p data
+          # The site CSV starts with a byte order mark for Excel; strip it for the repo copy.
+          curl -fsSL https://rebatehub.ca/data/rebates.csv | sed '1s/^\xEF\xBB\xBF//' > data/programs.csv
+          curl -fsSL https://rebatehub.ca/data/rebates.json > data/programs.json
+          # Sanity checks: valid JSON, plausible size, expected columns.
+          jq -e '.count > 100 and (.programs | length) == .count' data/programs.json
+          head -1 data/programs.csv | grep -q '^id,name,'
+
+      - name: Update version metadata
+        id: meta
+        run: |
+          set -euo pipefail
+          date=$(jq -r .updatedAt data/programs.json)
+          version=${date//-/.}
+          sed -i "s/^version: .*/version: \"$version\"/; s/^date-released: .*/date-released: \"$date\"/" CITATION.cff
+          jq --arg v "$version" --arg d "$date" '.version=$v | .publication_date=$d' .zenodo.json > .zenodo.tmp && mv .zenodo.tmp .zenodo.json
+          jq --arg v "$version" --arg d "$date" '.version=$v | .created=$d' datapackage.json > dp.tmp && mv dp.tmp datapackage.json
+          echo "date=$date" >> "$GITHUB_OUTPUT"
+          echo "tag=v$version" >> "$GITHUB_OUTPUT"
+
+      - name: Commit and release if changed
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          if git diff --quiet; then echo "No data change."; exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Data verified ${{ steps.meta.outputs.date }}"
+          git push
+          if gh release view "${{ steps.meta.outputs.tag }}" >/dev/null 2>&1; then echo "Release exists."; exit 0; fi
+          gh release create "${{ steps.meta.outputs.tag }}" --title "Data verified ${{ steps.meta.outputs.date }}" \
+            --notes "Monthly refresh. Live files: https://rebatehub.ca/data . Day-to-day changes: https://rebatehub.ca/rebate-tracker" \
+            data/programs.csv data/programs.json

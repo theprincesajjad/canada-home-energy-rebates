@@ -1,0 +1,38 @@
+{
+  "title": "Canadian home energy rebate programs dataset (RebateHub.ca)",
+  "upload_type": "dataset",
+  "description": "<p>Open dataset of Canadian home energy rebate, grant, loan and tax-credit programs: federal, provincial, territorial, utility and municipal, in all 13 provinces and territories. Each record has status, deadline, amounts, eligibility rules, official source links and the date it was last verified, checked against official program pages.</p><p>Methodology: https://rebatehub.ca/methodology. Change log: https://rebatehub.ca/rebate-tracker. RebateHub.ca is an independent Ontario business, not a government site. Programs change; always confirm details with the program administrator.</p>",
+  "creators": [
+    {
+      "name": "RebateHub.ca"
+    }
+  ],
+  "license": "cc-by-4.0",
+  "access_right": "open",
+  "language": "eng",
+  "keywords": [
+    "Canada",
+    "home energy",
+    "energy efficiency",
+    "rebates",
+    "incentives",
+    "heat pumps",
+    "housing",
+    "retrofits",
+    "open data"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://rebatehub.ca/data",
+      "relation": "isSupplementedBy",
+      "resource_type": "dataset"
+    },
+    {
+      "identifier": "https://rebatehub.ca/methodology",
+      "relation": "isDocumentedBy",
+      "resource_type": "publication-other"
+    }
+  ],
+  "version": "2026.10.25",
+  "publication_date": "2026-10-25"
+}
