@@ -5,7 +5,7 @@
   },
   "attribution": "Source: RebateHub.ca, CC BY 4.0",
   "source": "https://rebatehub.ca/data",
-  "updatedAt": "2026-10-25",
+  "updatedAt": "2026-10-27",
   "count": 181,
   "programs": [
     {
@@ -11318,16 +11318,16 @@
       ],
       "deadline": "2026-10-31",
       "startDate": "2026-08-01",
-      "officialUrl": "https://www.bchydro.com/news/conservation/2026/heat-pump-bonus-contest.html",
+      "officialUrl": "https://www.bchydro.com/powersmart/residential/savings-and-rebates/current-rebates-buy-backs/home-renovation-rebates/renovating-heating-system.html",
       "sourceUrls": [
         "https://www.bchydro.com/news/conservation/2026/heat-pump-bonus-contest.html",
         "https://www.bchydro.com/content/dam/BCHydro/customer-portal/documents/power-smart/residential/programs/air-source-heat-pump-bonus-rebates-terms-and-conditions.pdf",
         "https://www.bchydro.com/powersmart/residential/savings-and-rebates/current-rebates-buy-backs/home-renovation-rebates/renovating-heating-system.html",
         "https://www.bchydro.com/powersmart/residential/rebates-programs/condo-apartment-rebate-program.html"
       ],
-      "lastVerified": "2026-10-19",
+      "lastVerified": "2026-10-27",
       "confidence": "high",
-      "notes": "The deadline shown is the install-and-pay cutoff (October 31, 2026); applications are due November 30, 2026. Funding may run out before then. Only electric-to-heat-pump upgrades qualify; other upgrades in the same project do not earn the bonus. After October 31, only the regular rebates apply.",
+      "notes": "The deadline shown is the install-and-pay cutoff (October 31, 2026); applications are due November 30, 2026. Funding may run out before then. Only electric-to-heat-pump upgrades qualify; other upgrades in the same project do not earn the bonus. After October 31, only the regular rebates apply. BC Hydro runs a separate contest (three $5,000 prizes, no purchase necessary) alongside the bonus; the contest is not a rebate and is not counted in the amounts.",
       "url": "https://rebatehub.ca/rebates/bc-hydro-heat-pump-bonus-2026",
       "jurisdictionNames": [
         "British Columbia"
